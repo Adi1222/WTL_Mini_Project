@@ -1,0 +1,35 @@
+.bg-primary {
+    background-color: #0e1330!important;
+}
+
+.btn-primary {
+    background-color: #3f51b5!important;
+    border-color:  #3f51b5;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #3f51b5;
+}
+
+.nav-link {
+    color: #fff;
+}
+
+.nav-column {
+    background-color: #0e1330;
+}
+
+.content-main {
+    height: 92vh;
+}
+
+.dropdown-item-color{
+    background-color: #fff;
+}
+
+.dropdown-item.active,
+.dropdown-item-color:active,
+.dropdown-item-color:hover{
+    background-color: #3f51b5!important;
+    color: #fff;
+}
