@@ -7,10 +7,11 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" type="text/css" href="style.css">
 
-    <title>Hello, world!</title>
+    <title>Projectify</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -170,16 +171,175 @@
               <div class="tab-pane fade" id="v-pills-pending" role="tabpanel" aria-labelledby="v-pills-pending-tab">
                 <div class="container">
                     <h1>Pending</h1>
+                    <table class="table table-responsive table-bordered" role="grid">
+                      <thead>
+                        <tr>
+                          <th  scope="col">No.</th>
+                          <th  scope="col">Task Name</th>
+                          <th  scope="col">Task Description</th>
+                          <th  scope="col">Deadline</th>
+                          <th  scope="col">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Task 1</td>
+                          <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni cumque quo vitae labor</td>
+                          <td>1/1/2020</td>
+                          <td>
+                            <button class="btn"><i class="fa fa-pencil" style="font-size: 15px;color: rgb(27, 68, 121);" aria-hidden="true"></i></button>
+                            <button class="btn btn1"><i class="fa fa-trash" style="font-size: 15px;color: rgb(136, 41, 41);" aria-hidden="true"></i></button>
+                        </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Task 2</td>
+                          <td>Lorem ipsumde eveniet nulla consequatur possimus dolorem, sint quisquam. Pariatur, qui sapiente.</td>
+                          <td>1/1/2020</td>
+                          <td>
+                            <button class="btn"><i class="fa fa-pencil" style="font-size: 15px;color: rgb(27, 68, 121);" aria-hidden="true"></i></button>
+                            <button class="btn btn1"><i class="fa fa-trash" style="font-size: 15px;color: rgb(136, 41, 41);" aria-hidden="true"></i></button>
+                        </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Task 3</td>
+                          <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni cumque quo vitae laboriosam hic quas ad neque. Est officiis unde eveniet nulla consequatur possimus dolorem, sint quisquam. Pariatur, qui sapiente.</td>
+                          <td>1/1/2020</td>
+                          <td>
+                            <button class="btn"><i class="fa fa-pencil" style="font-size: 15px;color: rgb(27, 68, 121);" aria-hidden="true"></i></button>
+                            <button class="btn btn1"><i class="fa fa-trash" style="font-size: 15px;color: rgb(136, 41, 41);" aria-hidden="true"></i></button>
+                        </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Task 4</td>
+                          <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni cumque quo vitae laboriosam hic quas ad neque. Est officiis unde eveniet nulla consequatur possimus dolorem, sint quisquam. Pariatur, qui sapiente.</td>
+                          <td>1/1/2020</td>
+                          <td>
+                            <button class="btn"><i class="fa fa-pencil" style="font-size: 15px;color: rgb(27, 68, 121);" aria-hidden="true"></i></button>
+                            <button class="btn btn1"><i class="fa fa-trash" style="font-size: 15px;color: rgb(136, 41, 41);" aria-hidden="true"></i></button>
+                        </td>
+                        </tr>
+                      </tbody>
+                    </table>
                 </div>
             </div>
             <div class="tab-pane fade" id="v-pills-inProgress" role="tabpanel" aria-labelledby="v-pills-inProgress-tab">
               <div class="container">
                   <h1>In progress</h1>
+                  <table class="table table-responsive table-bordered" role="grid">
+                    <thead>
+                      <tr>
+                        <th  scope="col">No.</th>
+                        <th  scope="col">Task Name</th>
+                        <th  scope="col">Task Description</th>
+                        <th  scope="col">Deadline</th>
+                        <th  scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Task 1</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni cumque quo vitae labor</td>
+                        <td>1/1/2020</td>
+                        <td>
+                          <button class="btn"><i class="fa fa-pencil" style="font-size: 15px;color: rgb(27, 68, 121);" aria-hidden="true"></i></button>
+                          <button class="btn btn1"><i class="fa fa-trash" style="font-size: 15px;color: rgb(136, 41, 41);" aria-hidden="true"></i></button>
+                      </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Task 2</td>
+                        <td>Lorem ipsumde eveniet nulla consequatur possimus dolorem, sint quisquam. Pariatur, qui sapiente.</td>
+                        <td>1/1/2020</td>
+                        <td>
+                          <button class="btn"><i class="fa fa-pencil" style="font-size: 15px;color: rgb(27, 68, 121);" aria-hidden="true"></i></button>
+                          <button class="btn btn1"><i class="fa fa-trash" style="font-size: 15px;color: rgb(136, 41, 41);" aria-hidden="true"></i></button>
+                      </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Task 3</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni cumque quo vitae laboriosam hic quas ad neque. Est officiis unde eveniet nulla consequatur possimus dolorem, sint quisquam. Pariatur, qui sapiente.</td>
+                        <td>1/1/2020</td>
+                        <td>
+                          <button class="btn"><i class="fa fa-pencil" style="font-size: 15px;color: rgb(27, 68, 121);" aria-hidden="true"></i></button>
+                          <button class="btn btn1"><i class="fa fa-trash" style="font-size: 15px;color: rgb(136, 41, 41);" aria-hidden="true"></i></button>
+                      </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Task 4</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni cumque quo vitae laboriosam hic quas ad neque. Est officiis unde eveniet nulla consequatur possimus dolorem, sint quisquam. Pariatur, qui sapiente.</td>
+                        <td>1/1/2020</td>
+                        <td>
+                          <button class="btn"><i class="fa fa-pencil" style="font-size: 15px;color: rgb(27, 68, 121);" aria-hidden="true"></i></button>
+                          <button class="btn btn1"><i class="fa fa-trash" style="font-size: 15px;color: rgb(136, 41, 41);" aria-hidden="true"></i></button>
+                      </td>
+                      </tr>
+                    </tbody>
+                  </table>
               </div>
             </div>
             <div class="tab-pane fade" id="v-pills-completed" role="tabpanel" aria-labelledby="v-pills-completed-tab">
               <div class="container">
                   <h1>Completed</h1>
+                  <table class="table table-responsive table-bordered" role="grid">
+                    <thead>
+                      <tr>
+                        <th  scope="col">No.</th>
+                        <th  scope="col">Task Name</th>
+                        <th  scope="col">Task Description</th>
+                        <th  scope="col">Deadline</th>
+                        <th  scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Task 1</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni cumque quo vitae labor</td>
+                        <td>1/1/2020</td>
+                        <td>
+                          <button class="btn"><i class="fa fa-pencil" style="font-size: 15px;color: rgb(27, 68, 121);" aria-hidden="true"></i></button>
+                          <button class="btn btn1"><i class="fa fa-trash" style="font-size: 15px;color: rgb(136, 41, 41);" aria-hidden="true"></i></button>
+                      </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Task 2</td>
+                        <td>Lorem ipsumde eveniet nulla consequatur possimus dolorem, sint quisquam. Pariatur, qui sapiente.</td>
+                        <td>1/1/2020</td>
+                        <td>
+                          <button class="btn"><i class="fa fa-pencil" style="font-size: 15px;color: rgb(27, 68, 121);" aria-hidden="true"></i></button>
+                          <button class="btn btn1"><i class="fa fa-trash" style="font-size: 15px;color: rgb(136, 41, 41);" aria-hidden="true"></i></button>
+                      </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Task 3</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni cumque quo vitae laboriosam hic quas ad neque. Est officiis unde eveniet nulla consequatur possimus dolorem, sint quisquam. Pariatur, qui sapiente.</td>
+                        <td>1/1/2020</td>
+                        <td>
+                          <button class="btn"><i class="fa fa-pencil" style="font-size: 15px;color: rgb(27, 68, 121);" aria-hidden="true"></i></button>
+                          <button class="btn btn1"><i class="fa fa-trash" style="font-size: 15px;color: rgb(136, 41, 41);" aria-hidden="true"></i></button>
+                      </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Task 4</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni cumque quo vitae laboriosam hic quas ad neque. Est officiis unde eveniet nulla consequatur possimus dolorem, sint quisquam. Pariatur, qui sapiente.</td>
+                        <td>1/1/2020</td>
+                        <td>
+                          <button class="btn"><i class="fa fa-pencil" style="font-size: 15px;color: rgb(27, 68, 121);" aria-hidden="true"></i></button>
+                          <button class="btn btn1"><i class="fa fa-trash" style="font-size: 15px;color: rgb(136, 41, 41);" aria-hidden="true"></i></button>
+                      </td>
+                      </tr>
+                    </tbody>
+                  </table>
               </div>
             </div>
           </div>
