@@ -44,6 +44,10 @@
         <servlet-name>DownloadGuidelineServlet</servlet-name>
         <servlet-class>com.project_management.servlets.DownloadGuidelineServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddTaskServlet</servlet-name>
+        <servlet-class>com.project_management.servlets.AddTaskServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>project_overview_jsp</servlet-name>
         <url-pattern>/project-overview</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>DownloadGuidelineServlet</servlet-name>
         <url-pattern>/DownloadGuidelineServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddTaskServlet</servlet-name>
+        <url-pattern>/AddTaskServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

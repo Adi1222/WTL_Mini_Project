@@ -5,6 +5,7 @@ import com.project_management.entities.Guideline;
 import com.project_management.entities.Mentor;
 import com.project_management.entities.Project;
 import com.project_management.entities.Student;
+import com.project_management.entities.Task;
 import com.project_management.entities.Team;
 import java.sql.*;
 import java.util.ArrayList;
@@ -18,6 +19,60 @@ public class DatabaseInterface
     }
 
     public DatabaseInterface() {
+    }
+    
+    public boolean saveTask(Task task)
+    {
+        boolean f = false;
+        try
+        {
+            String query = "insert into tasks(title, description, teamId, taskStatus, mentorApproval, coordinatorApproval) values(?,?,?,?,?,?)";
+            PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setString(1, task.getTitle());
+            pstmt.setString(2, task.getDescription());
+            pstmt.setInt(3, task.getTeamId());
+            pstmt.setString(4, task.getStatus());
+            pstmt.setString(5, task.getMentorApproval());
+            pstmt.setString(6, task.getCoordinatorApproval());
+            pstmt.executeUpdate();
+            f = true;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return f;
+    }
+    
+    public ArrayList<Task> getTasksByTeamId(int team_id)
+    {
+        ArrayList<Task> tasks = new ArrayList<>();
+        try
+        {
+            String query = "select * from tasks where teamId=?";
+            PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setInt(1, team_id);
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next())
+            {
+                int id = rs.getInt("id");
+                String title = rs.getString("title");
+                String description = rs.getString("description");
+                int teamId = rs.getInt("teamId");
+                String status = rs.getString("taskStatus");
+                String mentorApproval = rs.getString("mentorApproval");
+                String coordinatorApproval = rs.getString("coordinatorApproval");
+                Timestamp timestamp = rs.getTimestamp("timestamp");
+                String grade = rs.getString("grade");
+                Task task = new Task(id, title, description, teamId, status, mentorApproval, coordinatorApproval, timestamp, grade);
+                tasks.add(task);
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return tasks;
     }
     
     public boolean saveProject(Project project)
