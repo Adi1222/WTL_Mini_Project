@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/java/com/project_management/entities/Coordinator.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>119</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/src/java/com/project_management/helper/ConnectionProvider.java</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/src/java/com/project_management/database/DatabaseInterface.java</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/src/java/com/project_management/servlets/CoordinatorRegisterServlet.java</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/sidebar.jsp</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/profile.jsp</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/teams.jsp</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/navbar.jsp</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/src/java/com/project_management/servlets/LoginServlet.java</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/StudentModule/studentsidebar.jsp</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/home.jsp</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/src/java/com/project_management/servlets/AddProjectServlet.java</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/students.jsp</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/search_mentors.jsp</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/load_teams.jsp</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/search_students.jsp</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/CSS/navbar.css</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/login_page.jsp</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/index.html</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/Javascript/register.js</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/mentors.jsp</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/src/java/com/project_management/entities/Coordinator.java</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/src/java/com/project_management/entities/Student.java</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/load_students.jsp</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/StudentModule/studentnavbar.jsp</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/src/java/com/project_management/servlets/UpdateApprovalServlet.java</file>
+        </group>
+    </open-files>
+</project-private>
