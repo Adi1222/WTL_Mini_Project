@@ -5,6 +5,8 @@
  */
 package com.project_management.entities;
 
+import java.sql.Timestamp;
+
 /**
  *
  * @author Admin
@@ -15,6 +17,7 @@ public class Guideline
     private String title;
     private int coordinatorId;
     private String filename;
+    private Timestamp timestamp;
 
     public Guideline() {
     }
@@ -25,11 +28,12 @@ public class Guideline
         this.filename = filename;
     }
 
-    public Guideline(int id, String title, int coordinatorId, String filename) {
+    public Guideline(int id, String title, int coordinatorId, String filename, Timestamp timestamp) {
         this.id = id;
         this.title = title;
         this.coordinatorId = coordinatorId;
         this.filename = filename;
+        this.timestamp = timestamp;
     }
 
     public int getId() {
@@ -63,4 +67,14 @@ public class Guideline
     public void setFilename(String filename) {
         this.filename = filename;
     }
+
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
+    
+    
 }

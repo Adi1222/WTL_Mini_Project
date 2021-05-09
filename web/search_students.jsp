@@ -1,3 +1,4 @@
+<%@page import="com.project_management.entities.Team"%>
 <%@page import="com.project_management.entities.Student"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.project_management.helper.ConnectionProvider"%>
@@ -19,7 +20,8 @@
                 <h4><%= s.getFname() + " " + s.getLname()%></h4>
                 <h5><%= s.getEmail()%></h5>
                 <%
-                    if(s.getTeamId() == 0)
+                    Team t = db.getTeamById(s.getTeamId());
+                    if(s.getTeamId() == 0 || t.getStatus().equals("REJECTED") || t.getStatus().equals("PENDING"))
                     {
                 %>
                 
@@ -36,7 +38,7 @@
                 <%
                     }
                 %>
-                <a href="#" class="btn btn-primary">Profile</a>
+                <button class="btn btn-primary"><a href="student_profile.jsp?id=<%= s.getId() %>" >Profile</a></button>
             </div>
         </div>
     </div>

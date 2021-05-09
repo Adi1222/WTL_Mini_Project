@@ -18,7 +18,8 @@
         <%@include file="navbar.jsp" %>
         <div class="wrapper">
             <%@include file="sidebar.jsp" %>
-            <%                if (user == null) {
+            <%                
+                if (user == null) {
                     response.sendRedirect("login_page.jsp");
                 }
             %>

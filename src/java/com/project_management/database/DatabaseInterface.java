@@ -635,7 +635,8 @@ public class DatabaseInterface
                 String title = rs.getString("title");
                 int cid = rs.getInt("coordinatorId");
                 String filename = rs.getString("filename");
-                guidelines.add(new Guideline(id, title, cid, filename));
+                Timestamp ts = rs.getTimestamp("timestamp");
+                guidelines.add(new Guideline(id, title, cid, filename, ts));
             }
         }
         catch(Exception e)
