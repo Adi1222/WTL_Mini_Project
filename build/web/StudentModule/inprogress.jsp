@@ -4,6 +4,13 @@
     Author     : Aditya
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.*" %>
+<%@page import="com.project_management.entities.Student" %>
+<%@page import="com.project_management.entities.Task" %>
+<%@page import="com.project_management.entities.Team" %>
+<%@page import="com.project_management.helper.ConnectionProvider"%>
+<%@page import="com.project_management.database.DatabaseInterface"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page errorPage="../error_page.jsp" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -25,6 +32,9 @@
             <div id="content">
                 <div class="container-fluid">
                     <table class="table table-responsive table-bordered" role="grid">
+                        
+                        
+                        
                         <thead>
                           <tr>
                             <th  scope="col">No.</th>
@@ -34,27 +44,39 @@
                             <th  scope="col">Action</th>
                           </tr>
                         </thead>
+                        
+                        
                         <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Task 1</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni cumque quo vitae labor</td>
-                            <td>1/1/2020</td>
-                            <td>
-                              <button class="btn"><i class="fa fa-pencil" style="font-size: 15px;color: rgb(27, 68, 121);" aria-hidden="true"></i></button>
-                              <button class="btn btn1"><i class="fa fa-trash" style="font-size: 15px;color: rgb(136, 41, 41);" aria-hidden="true"></i></button>
-                          </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Task 2</td>
-                            <td>Lorem ipsumde eveniet nulla consequatur possimus dolorem, sint quisquam. Pariatur, qui sapiente.</td>
-                            <td>1/1/2020</td>
-                            <td>
-                              <button class="btn"><i class="fa fa-pencil" style="font-size: 15px;color: rgb(27, 68, 121);" aria-hidden="true"></i></button>
-                              <button class="btn btn1"><i class="fa fa-trash" style="font-size: 15px;color: rgb(136, 41, 41);" aria-hidden="true"></i></button>
-                          </td>
-                          </tr>
+                            
+                            
+                            <%
+                                DatabaseInterface db = new DatabaseInterface(ConnectionProvider.getConnection());
+                                 Student user = (Student) session.getAttribute("currentUser");
+                                int teamid = user.getTeamId();
+                                ArrayList<Task> tasks = db.getProgressTasks(teamid);
+                                System.out.println(tasks.size());
+                                int cnt = 0;
+                                for (Task t : tasks) {
+                                    cnt += 1;
+                            %>                            
+                            
+
+                                <tr>
+                                    <th scope="row"><%= cnt %></th>
+                                  <td><%= t.getTitle() %></td>
+                                  <td><%= t.getDescription() %></td>
+                                  <td><%= t.getDeadline() %></td>
+                                  <td>
+                                    <button class="btn"><i class="fa fa-pencil" style="font-size: 15px;color: rgb(27, 68, 121);" aria-hidden="true"></i></button>
+                                    <button class="btn btn1"><i class="fa fa-trash" style="font-size: 15px;color: rgb(136, 41, 41);" aria-hidden="true"></i></button>
+                                </td>
+                                </tr>                            
+                                                     
+                            <%
+                               }
+                           %>
+                          
+                          
                           <tr>
                             <th scope="row">1</th>
                             <td>Task 3</td>
@@ -65,6 +87,8 @@
                               <button class="btn btn1"><i class="fa fa-trash" style="font-size: 15px;color: rgb(136, 41, 41);" aria-hidden="true"></i></button>
                           </td>
                           </tr>
+                          
+                          
                           <tr>
                             <th scope="row">1</th>
                             <td>Task 4</td>
@@ -75,7 +99,11 @@
                               <button class="btn btn1"><i class="fa fa-trash" style="font-size: 15px;color: rgb(136, 41, 41);" aria-hidden="true"></i></button>
                           </td>
                           </tr>
+                          
+                          
                         </tbody>
+                        
+                        
                       </table>
 
                 </div>

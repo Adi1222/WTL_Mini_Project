@@ -51,42 +51,48 @@ public class LoginServlet extends HttpServlet {
             String password = request.getParameter("password");
             DatabaseInterface db = new DatabaseInterface(ConnectionProvider.getConnection());
             
-            Coordinator coordinator = db.getCoordinatorByEmailAndPassword(email, password);
-            if(coordinator == null)
-            {
-                //out.print("Invalid details");
-                //Student student = db.getStudentByEmailAndPassword(email, password);
-                
-                
-                /*if(student == null) // chances are he/she can be a co-ordinator
-                {
-                    out.print("hi");
-                    Mentor mentor = db.getMentorByEmailAndPassword(email, password);
-                    
-                    if(mentor == null)
-                    {
-                        out.print("Invalid details");
-                    }
-                    else
-                    {
-                        HttpSession session = request.getSession();
-                        session.setAttribute("currentUser", mentor);
-                        response.sendRedirect("/StudentModule/studenthome.jsp");
-                    }
-                }
-                else
-                {*/
-                    HttpSession session = request.getSession();
-                    //session.setAttribute("currentUser", student);
-                    response.sendRedirect(request.getContextPath() +  "/StudentModule/studenthome.jsp");
-                //}
-            }
-            else
-            {
-                HttpSession session = request.getSession();
-                session.setAttribute("currentUser", coordinator);
-                response.sendRedirect("home.jsp");                
-            }
+            
+            Student student = db.getStudentByEmailAndPassword(email, password);
+            HttpSession session = request.getSession();
+            session.setAttribute("currentUser", student);
+            response.sendRedirect(request.getContextPath() +  "/StudentModule/studenthome.jsp");
+            
+//            Coordinator coordinator = db.getCoordinatorByEmailAndPassword(email, password);
+//            if(coordinator == null)
+//            {
+//                out.print("Invalid details");
+//                Student student = db.getStudentByEmailAndPassword(email, password);
+//                
+//                
+//                if(student == null) // chances are he/she can be a co-ordinator
+//                {
+//                    out.print("hi");
+//                    Mentor mentor = db.getMentorByEmailAndPassword(email, password);
+//                    
+//                    if(mentor == null)
+//                    {
+//                        out.print("Invalid details");
+//                    }
+//                    else
+//                    {
+//                        HttpSession session = request.getSession();
+//                        session.setAttribute("currentUser", mentor);
+//                        response.sendRedirect("/StudentModule/studenthome.jsp");
+//                    }
+//                }
+//                else
+//                {
+//                    HttpSession session = request.getSession();
+//                    session.setAttribute("currentUser", student);
+//                    response.sendRedirect(request.getContextPath() +  "/StudentModule/studenthome.jsp");
+//                }
+//            }
+//            else
+//            {
+//                HttpSession session = request.getSession();
+//                session.setAttribute("currentUser", coordinator);
+//                response.sendRedirect("home.jsp");                
+//            }
             out.println("</body>");
             out.println("</html>");
         }

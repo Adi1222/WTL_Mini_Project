@@ -16,7 +16,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://fonts.googleapis.com/css?family=Barlow%7CBarlow+Condensed:400,700&amp;display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="CSS/navbar.css">
+        <link rel="stylesheet" href="../CSS/navbar.css">
     </head>
     <body>
         

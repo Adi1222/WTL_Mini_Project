@@ -5,6 +5,7 @@ import com.project_management.entities.Mentor;
 import com.project_management.entities.Project;
 import com.project_management.entities.Student;
 import com.project_management.entities.Team;
+import com.project_management.entities.Task;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -83,6 +84,138 @@ public class DatabaseInterface
         }
         return approvals;
     }
+    
+    public ArrayList<Task> getTasksByTeamId(int team_id)
+    {
+        ArrayList<Task> tasks = new ArrayList<>();
+        try
+        {
+            String query = "select * from tasks where teamId=?";
+            PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setInt(1, team_id);
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next())
+            {
+                int id = rs.getInt("id");
+                String title = rs.getString("title");
+                String description = rs.getString("description");
+                int teamId = rs.getInt("teamId");
+                String status = rs.getString("taskStatus");
+                String mentorApproval = rs.getString("mentorApproval");
+                String coordinatorApproval = rs.getString("coordinatorApproval");
+                Timestamp timestamp = rs.getTimestamp("timestamp");
+                String grade = rs.getString("grade");
+                Task task = new Task(id, title, description, teamId, status, mentorApproval, coordinatorApproval, timestamp, grade);
+                tasks.add(task);
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return tasks;
+    }
+      
+    public ArrayList<Task> getPendingTasks(int team_id)
+    {
+        ArrayList<Task> tasks = new ArrayList<>();
+        try
+        {
+            String query = "select * from tasks where taskStatus = 'PENDING' and teamId=? ";
+            PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setInt(1, team_id);
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next())
+            {
+                int id = rs.getInt("id");
+                String title = rs.getString("title");
+                String description = rs.getString("description");
+                int teamId = rs.getInt("teamId");
+                String status = rs.getString("taskStatus");
+                String mentorApproval = rs.getString("mentorApproval");
+                String coordinatorApproval = rs.getString("coordinatorApproval");
+                Timestamp timestamp = rs.getTimestamp("timestamp");
+                Timestamp deadline = rs.getTimestamp("deadline");
+                String grade = rs.getString("grade");
+                Task task = new Task(id, title, description, teamId, status, mentorApproval, coordinatorApproval, timestamp, deadline ,grade);
+                tasks.add(task);
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return tasks;
+    }
+    
+    public ArrayList<Task> getProgressTasks(int team_id)
+    {
+        
+        ArrayList<Task> tasks = new ArrayList<>();
+        try
+        {
+            String query = "select * from tasks where taskStatus = 'INPROGRESS' and teamId=? ";
+            PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setInt(1, team_id);
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next())
+            {
+                int id = rs.getInt("id");
+                String title = rs.getString("title");
+                String description = rs.getString("description");
+                int teamId = rs.getInt("teamId");
+                String status = rs.getString("taskStatus");
+                String mentorApproval = rs.getString("mentorApproval");
+                String coordinatorApproval = rs.getString("coordinatorApproval");
+                Timestamp timestamp = rs.getTimestamp("timestamp");
+                Timestamp deadline = rs.getTimestamp("deadline");
+                String grade = rs.getString("grade");
+                Task task = new Task(id, title, description, teamId, status, mentorApproval, coordinatorApproval, timestamp, deadline ,grade);
+                tasks.add(task);
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return tasks;
+        
+    }
+    
+    public ArrayList<Task> getCompletedTasks(int team_id)
+    {
+        
+        ArrayList<Task> tasks = new ArrayList<>();
+        try
+        {
+            String query = "select * from tasks where taskStatus = 'COMPLETED' and teamId=? ";
+            PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setInt(1, team_id);
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next())
+            {
+                int id = rs.getInt("id");
+                String title = rs.getString("title");
+                String description = rs.getString("description");
+                int teamId = rs.getInt("teamId");
+                String status = rs.getString("taskStatus");
+                String mentorApproval = rs.getString("mentorApproval");
+                String coordinatorApproval = rs.getString("coordinatorApproval");
+                Timestamp timestamp = rs.getTimestamp("timestamp");
+                Timestamp deadline = rs.getTimestamp("deadline");
+                String grade = rs.getString("grade");
+                Task task = new Task(id, title, description, teamId, status, mentorApproval, coordinatorApproval, timestamp, deadline ,grade);
+                tasks.add(task);
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return tasks;   
+    }
+            
+    
     
     public ArrayList<Team> getTeams()
     {
@@ -255,7 +388,7 @@ public class DatabaseInterface
             
             if(sturs.next())
             {
-                
+                student = new Student();
                 student.setId(sturs.getInt("id"));
                 student.setFname(sturs.getString("fname"));
                 student.setLname(sturs.getString("lname"));
@@ -324,7 +457,7 @@ public class DatabaseInterface
             
             if(mrs.next())
             {
-                
+                mentor = new Mentor();
                 mentor.setId(mrs.getInt("id"));
                 mentor.setFname(mrs.getString("fname"));
                 mentor.setLname(mrs.getString("lname"));
@@ -345,6 +478,35 @@ public class DatabaseInterface
     }
     
     
+    public Mentor getMentorById(int x)
+    {
+        Mentor mentor = null;
+        try
+        {            
+            String query = "select * from mentors where id=" + x + ";";
+            PreparedStatement pstmt = con.prepareStatement(query);
+            System.out.println(pstmt);
+            ResultSet rs = pstmt.executeQuery(); 
+            if(rs.next())
+            {
+                int id = rs.getInt("id");
+                String fname = rs.getString("fname");
+                String lname = rs.getString("lname");
+                String skills = rs.getString("skills");
+                String email = rs.getString("email");
+                String password = rs.getString("password");
+                Timestamp timestamp = rs.getTimestamp("timestamp");
+                String profile = rs.getString("profile");
+                mentor = new Mentor(id, fname, lname, skills, email, password, timestamp, profile);
+              
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return mentor;
+    }
     
     public ArrayList<Mentor> getMentors()
     {

@@ -24,7 +24,19 @@
 
             <div id="content">
                 <div class="container-fluid">
-                    <h1>Your Team</h1>
+                    <div class="row">
+                        <h1 class="mr-auto">Your Team</h1>
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" id="search-team-members" placeholder="Search" aria-label="Search">
+                        </form>
+                    </div>
+                    <div class="container text-center" id="loader">
+                         <i class="fas fa-sync fa-3x fa-spin"></i>
+                        <h3 class="mt-2">Loading...</h3>
+                    </div>
+                    <div class="container-fluid mt-3" id="students-container">
+                        
+                    </div>
                 </div>
             </div>
             
@@ -33,7 +45,38 @@
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <script src="../Javascript/sidebar.js"></script>   
+        <script src="../Javascript/sidebar.js"></script>  
+        <script src="../Javascript/teammembers.js"></script>
+        
+        <script>
+            $(document).ready(function (e) {
+               $('search-team-members').keyup(function () {
+                   var txt = $(this).val();
+                   if (txt === '')
+                   {
+                       $.ajax({
+                           url: '',
+                           success: function (data, textStatus, jqXHR) {
+                                $('#loader').hide();
+                                $('#students-container').html(data);
+                            }    
+                       });
+                   }
+                   else
+                   {
+                       console.log(txt);
+                       $('#students-container').html('');
+                       $.ajax({
+                           url: 'search_team_members',
+                           success:  function (data, textStatus, jqXHR) {
+                               $('#students-container').html(data);
+                           }
+                       });
+                   }
+               });
+            });
+        </script>
+        
         
     </body>
 </html>

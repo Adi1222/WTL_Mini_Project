@@ -4,6 +4,12 @@
     Author     : Aditya
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.project_management.entities.Student" %>
+<%@page import="com.project_management.entities.Task" %>
+<%@page import="com.project_management.entities.Team" %>
+<%@page import="com.project_management.helper.ConnectionProvider"%>
+<%@page import="com.project_management.database.DatabaseInterface"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page errorPage="../error_page.jsp" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -25,12 +31,23 @@
             <div id="content">
                 <div class="container-fluid">
                     <div id="accordion">
+                        
+                        <%
+                            DatabaseInterface db = new DatabaseInterface(ConnectionProvider.getConnection());
+                             Student user = (Student) session.getAttribute("currentUser");
+                            int teamid = user.getTeamId();
+                            ArrayList<Task> tasks = db.getTasksByTeamId(teamid);
+                            System.out.println(tasks.size());
+                            for (Task t : tasks) {
+                        %>
+                        
+                        
                         <div class="container mb-2">
                             <div class="card">
                                 <div class="card-header" id="headingOne">
                                     <div class="d-flex flex-row">
                                         <h5 class="mt-2 mr-auto">
-                                            Task name-1
+                                            <%= t.getTitle() %>
                                         </h5>
                                         <button class="btn btn-primary" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                             Open
@@ -39,13 +56,19 @@
                                 </div>                       
                                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                                   <div class="card-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                      <%= t.getDescription() %>
                                   </div>
                                 </div>
                               </div>
                         </div>
+                                  
+                         
+                         <%
+                            }
+                        %>
                         
-                        <div class="container  mb-2">
+                        
+<!--                        <div class="container  mb-2">
                             <div class="card">
                             <div class="card-header" id="headingTwo">
                                 <div class="d-flex flex-row">
@@ -64,6 +87,8 @@
                             </div>
                             </div>
                         </div>
+                        
+                        
 
                         <div class="container  mb-2">
                             <div class="card">
@@ -84,6 +109,8 @@
                                 </div>
                               </div>
                         </div>
+                        -->
+                        
                         
                    
                 </div>
