@@ -65,17 +65,58 @@
                                   <td><%= t.getDescription() %></td>
                                   <td><%= t.getDeadline() %></td>
                                   <td>
-                                    <button class="btn"><i class="fa fa-pencil" style="font-size: 15px;color: rgb(27, 68, 121);" aria-hidden="true"></i></button>
-                                    <button class="btn btn1"><i class="fa fa-trash" style="font-size: 15px;color: rgb(136, 41, 41);" aria-hidden="true"></i></button>
+                                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
+<!--                                    <button class="btn"><i class="fa fa-pencil" style="font-size: 15px;color: rgb(27, 68, 121);" aria-hidden="true"></i></button>
+                                    <button class="btn btn1"><i class="fa fa-trash" style="font-size: 15px;color: rgb(136, 41, 41);" aria-hidden="true"></i></button>-->
                                 </td>
-                                </tr>                            
+                                </tr>
+                                
+                                <!-- Modal -->
+                                <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="taskModalLabel">Status</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <form action="../EditTaskServlet1?task_id=<%= t.getId() %>" method="post">
+                                                <div class="modal-body">
+
+                                                    
+                                                       <div class="form-check">
+                                                          <input class="form-check-input" type="checkbox" value="1" id="progressbox" name="status">
+                                                          <label class="form-check-label" for="progressbox">
+                                                            In Progress
+                                                          </label>
+                                                        </div>
+                                                    
+                                                        <div class="form-check">
+                                                          <input class="form-check-input" type="checkbox" value="2" id="completedbox" name="status" >
+                                                          <label class="form-check-label" for="completedbox">
+                                                            Completed
+                                                          </label>
+                                                        </div>
+                                                    
+                                                   
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-outline-success mr-2" type="submit" name="btnedit" value="1">Edit</button>
+                                       
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                                                      
                             <%
                                }
                            %>
                         
 
-
+<!--
                               <tr>
                               <th scope="row">1</th>
                               <td>Task 2</td>
@@ -85,7 +126,7 @@
                                 <button class="btn"><i class="fa fa-pencil" style="font-size: 15px;color: rgb(27, 68, 121);" aria-hidden="true"></i></button>
                                 <button class="btn btn1"><i class="fa fa-trash" style="font-size: 15px;color: rgb(136, 41, 41);" aria-hidden="true"></i></button>
                             </td>
-                            </tr>
+                            </tr>-->
 
 
  <!--                           <tr>
@@ -116,6 +157,7 @@
                         
                         
                       </table>
+                           
                 </div>
             </div>
             
@@ -125,6 +167,27 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="../Javascript/sidebar.js"></script>   
+        
+        <script>
+            $(document).ready(function () {
+                $("input:checkbox").on('click', function() {
+                // in the handler, 'this' refers to the box clicked on
+                var $box = $(this);
+                if ($box.is(":checked")) {
+                  // the name of the box is retrieved using the .attr() method
+                  // as it is assumed and expected to be immutable
+                  var group = "input:checkbox[name='" + $box.attr("name") + "']";
+                  // the checked state of the group/box on the other hand will change
+                  // and the current value is retrieved using .prop() method
+                  $(group).prop("checked", false);
+                  $box.prop("checked", true);
+                } else {
+                  $box.prop("checked", false);
+                }
+              });
+            });
+
+        </script>
         
     </body>
 </html>

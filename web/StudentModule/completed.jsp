@@ -40,7 +40,7 @@
                             <th  scope="col">Task Name</th>
                             <th  scope="col">Task Description</th>
                             <th  scope="col">Deadline</th>
-                            <th  scope="col">Action</th>
+                            <th  scope="col">Grade</th>
                           </tr>
                         </thead>
                         
@@ -65,10 +65,7 @@
                                   <td><%= t.getTitle() %></td>
                                   <td><%= t.getDescription() %></td>
                                   <td><%= t.getDeadline() %></td>
-                                  <td>
-                                    <button class="btn"><i class="fa fa-pencil" style="font-size: 15px;color: rgb(27, 68, 121);" aria-hidden="true"></i></button>
-                                    <button class="btn btn1"><i class="fa fa-trash" style="font-size: 15px;color: rgb(136, 41, 41);" aria-hidden="true"></i></button>
-                                </td>
+                                  <td><%= t.getGrade() %></td>
                                 </tr>                            
                                                      
                             <%
@@ -76,7 +73,7 @@
                            %>
                           
                           
-                          <tr>
+<!--                          <tr>
                             <th scope="row">1</th>
                             <td>Task 3</td>
                             <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni cumque quo vitae laboriosam hic quas ad neque. Est officiis unde eveniet nulla consequatur possimus dolorem, sint quisquam. Pariatur, qui sapiente.</td>
@@ -97,7 +94,7 @@
                               <button class="btn"><i class="fa fa-pencil" style="font-size: 15px;color: rgb(27, 68, 121);" aria-hidden="true"></i></button>
                               <button class="btn btn1"><i class="fa fa-trash" style="font-size: 15px;color: rgb(136, 41, 41);" aria-hidden="true"></i></button>
                           </td>
-                          </tr>
+                          </tr>-->
                           
                           
                         </tbody>

@@ -67,16 +67,49 @@
                                   <td><%= t.getDescription() %></td>
                                   <td><%= t.getDeadline() %></td>
                                   <td>
-                                    <button class="btn"><i class="fa fa-pencil" style="font-size: 15px;color: rgb(27, 68, 121);" aria-hidden="true"></i></button>
-                                    <button class="btn btn1"><i class="fa fa-trash" style="font-size: 15px;color: rgb(136, 41, 41);" aria-hidden="true"></i></button>
+                                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
+<!--                                    <button class="btn"><i class="fa fa-pencil" style="font-size: 15px;color: rgb(27, 68, 121);" aria-hidden="true"></i></button>
+                                    <button class="btn btn1"><i class="fa fa-trash" style="font-size: 15px;color: rgb(136, 41, 41);" aria-hidden="true"></i></button>-->
                                 </td>
-                                </tr>                            
+                                </tr> 
+                                
+                                <!-- Modal -->
+                                <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="taskModalLabel">Status</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <form action="../EditTaskServlet2?task_id=<%= t.getId() %>" method="post">
+                                                <div class="modal-body">
+
+
+                                                    <div class="form-check">
+                                                      <input class="form-check-input" type="checkbox" value="1" id="completedbox" name="status" >
+                                                      <label class="form-check-label" for="completedbox">
+                                                        Completed
+                                                      </label>
+                                                    </div>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-outline-success mr-2" type="submit" name="btnedit" value="1">Edit</button>
+                                       
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                   
                                                      
                             <%
                                }
                            %>
                           
-                          
+<!--                          
                           <tr>
                             <th scope="row">1</th>
                             <td>Task 3</td>
@@ -98,7 +131,7 @@
                               <button class="btn"><i class="fa fa-pencil" style="font-size: 15px;color: rgb(27, 68, 121);" aria-hidden="true"></i></button>
                               <button class="btn btn1"><i class="fa fa-trash" style="font-size: 15px;color: rgb(136, 41, 41);" aria-hidden="true"></i></button>
                           </td>
-                          </tr>
+                          </tr>-->
                           
                           
                         </tbody>

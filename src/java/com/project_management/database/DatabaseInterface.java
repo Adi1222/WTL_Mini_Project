@@ -295,6 +295,27 @@ public class DatabaseInterface
         return f;
     }
     
+    public boolean updateTaskStatus(int taskid, String status)
+    {
+        boolean f = false;
+        
+        try
+        {
+            String query = "update tasks set taskStatus=? where id=?;";
+            PreparedStatement pstmt = con.prepareCall(query);
+            pstmt.setString(1, status);
+            pstmt.setInt(2, taskid);
+            System.out.println(pstmt);
+            pstmt.executeUpdate();
+            f = true;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return f;
+    }
+    
     public Team getTeamById(int teamId)
     {
         Team team = null;

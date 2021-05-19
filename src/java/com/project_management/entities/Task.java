@@ -25,6 +25,7 @@ public class Task {
     private Timestamp deadline;
 
     public Task() {
+        
     }
 
     public Task(String title, String description, int teamId, String status, String mentorApproval, String coordinatorApproval) {
