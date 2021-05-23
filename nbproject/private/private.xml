@@ -14,9 +14,11 @@
         <group>
             <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/src/java/com/project_management/entities/Task.java</file>
             <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/src/java/com/project_management/helper/ConnectionProvider.java</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/src/java/com/project_management/servlets/AddTeamMemberServlet.java</file>
             <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/src/java/com/project_management/database/DatabaseInterface.java</file>
             <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/src/java/com/project_management/servlets/CoordinatorRegisterServlet.java</file>
             <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/src/java/com/project_management/helper/Helper.java</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/StudentModule/search_team_members.jsp</file>
             <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/profile.jsp</file>
             <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/teams.jsp</file>
             <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/navbar.jsp</file>
@@ -24,12 +26,14 @@
             <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/StudentModule/pending.jsp</file>
             <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/src/java/com/project_management/servlets/LoginServlet.java</file>
             <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/register_page.html</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/StudentModule/studentsidebar.jsp</file>
             <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/home.jsp</file>
             <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/load_mentors.jsp</file>
             <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/src/java/com/project_management/servlets/AddProjectServlet.java</file>
             <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/students.jsp</file>
             <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/src/java/com/project_management/entities/Team.java</file>
             <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/search_mentors.jsp</file>
+            <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/resources/user.png</file>
             <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/src/java/com/project_management/entities/Mentor.java</file>
             <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/project_overview.jsp</file>
             <file>file:/I:/TE-SEM2/WTL/WTL_Mini_Project/web/load_approvals.jsp</file>
