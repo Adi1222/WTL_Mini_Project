@@ -245,6 +245,28 @@ public class DatabaseInterface
         return approvals;
     }
     
+    public boolean addTeamMember(int teamid, String rollno)
+    {
+        boolean f = false;
+        
+        try
+        {
+            String query = "update students set teamId=?  where rollNo=?;";
+            PreparedStatement pstmt = con.prepareStatement(query); 
+            pstmt.setInt(1, teamid);
+            pstmt.setString(2, rollno);
+            System.out.println(pstmt);
+            pstmt.executeUpdate();
+            
+            f = true;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return f;
+    }
+    
     public ArrayList<Team> getTeamsByCoordinatorId(int coordinatorId)
     {
         ArrayList<Team> approvals = new ArrayList<>();

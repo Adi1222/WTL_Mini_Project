@@ -49,6 +49,7 @@
                                         <h5 class="mt-2 mr-auto">
                                             <%= t.getTitle() %>
                                         </h5>
+                                            <h5 class="text-right" style="bold">Deadline:</h5>
                                         <button class="btn btn-primary" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                             Open
                                         </button>

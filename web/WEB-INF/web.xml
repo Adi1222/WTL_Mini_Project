@@ -40,6 +40,10 @@
         <servlet-name>EditTaskServlet2</servlet-name>
         <servlet-class>com.project_management.servlets.EditTaskServlet2</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddTeamMemberServlet</servlet-name>
+        <servlet-class>com.project_management.servlets.AddTeamMemberServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>project_overview_jsp</servlet-name>
         <url-pattern>/project-overview</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>EditTaskServlet2</servlet-name>
         <url-pattern>/EditTaskServlet2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddTeamMemberServlet</servlet-name>
+        <url-pattern>/AddTeamMemberServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

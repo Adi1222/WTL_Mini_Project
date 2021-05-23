@@ -42,7 +42,7 @@
             <div id="content">
                 <div class="container-fluid">
                     <div class="card">
-                        <img src="../resources/<%= mentor.getProfile() %>" alt="guide" style="width:100%">
+                        <img class="card-img-top mx-auto" src="../resources/<%= mentor.getProfile() %>" alt="guide" style="width: 7rem; border-radius: 50%">
                         <h1><%= mentor.getFname() %></h1>
                         <p class="title">Pune Institute of Computer Technology</p>
                         <p>Computer Engineering department</p>

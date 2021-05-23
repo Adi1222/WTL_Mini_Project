@@ -4,6 +4,14 @@
     Author     : Aditya
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.*" %>
+<%@page import="com.project_management.entities.Student" %>
+<%@page import="com.project_management.entities.Task" %>
+<%@page import="com.project_management.entities.Project" %>
+<%@page import="com.project_management.entities.Team" %>
+<%@page import="com.project_management.helper.ConnectionProvider"%>
+<%@page import="com.project_management.database.DatabaseInterface"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page errorPage="../error_page.jsp" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -22,20 +30,97 @@
             <%@include file="studentsidebar.jsp" %>
             
 
+             <%  
+                DatabaseInterface db = new DatabaseInterface(ConnectionProvider.getConnection());
+                Student user = (Student) session.getAttribute("currentUser"); 
+                int teamid = user.getTeamId();
+                Team t = db.getTeamById(teamid);
+                ArrayList<Student> students = db.getStudentsByTeamId(teamid);
+            %>
+            
             <div id="content">
                 <div class="container-fluid">
                     <div class="row">
                         <h1 class="mr-auto">Your Team</h1>
-                        <form class="form-inline my-2 my-lg-0">
+<!--                        <form class="form-inline my-2 my-lg-0">
                             <input class="form-control mr-sm-2" type="search" id="search-team-members" placeholder="Search" aria-label="Search">
-                        </form>
+                        </form>-->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addMemberModal">Add</button>
                     </div>
-                    <div class="container text-center" id="loader">
+<!--                    <div class="container text-center" id="loader">
                          <i class="fas fa-sync fa-3x fa-spin"></i>
                         <h3 class="mt-2">Loading...</h3>
+                    </div>-->
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="addMemberModal" tabindex="-1" role="dialog" aria-labelledby="addMemberModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            
+                            <div class="modal-content">
+                                
+                                
+                                <div class="modal-header">
+                                        <h5 class="modal-title" id="addMemberModalLabel">Add Team Member</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                
+<!--                                
+                                <form class="form-inline my-2 my-lg-0">
+                                    <input class="form-control mr-sm-2" type="search" id="search-team-members" placeholder="Search" aria-label="Search">
+                                </form>-->
+        
+                                
+                                
+                                <form action="../AddTeamMemberServlet?team_id=<%= user.getTeamId() %>" method="post">
+                                    
+                                   <div class="modal-body">
+                                       <!--<label class="sr-only" for="rno">Name</label>-->
+                                       <input type="text" class="form-control mb-2 mr-sm-2" id="rno" name="rno" placeholder="Enter Roll No.">
+                                    </div>
+                                    
+                                    <div class="modal-footer">
+                                        <button class="btn btn-outline-success mr-2" type="submit" name="btnadd" value="1">ADD</button>
+                                    </div>
+                                </form>
+                                    
+                                    
+                            </div>
+                                    
+                        </div>
                     </div>
+
+
+
                     <div class="container-fluid mt-3" id="students-container">
-                        
+                            <div class="shadow-lg p-3 bg-primary rounded box-shadow">
+                                <h3 class="text-light border-bottom border-gray pb-2">Team Members</h3>
+                                <div class="row">                            
+                                    <%
+                                        for (Student s : students) {
+                                    %>
+                                    <div class="col-3">
+                                        <div class="card mt-2 pt-3">
+                                            <img class="card-img-top mx-auto" src="../resources/<%= s.getProfile()%>" alt="profile" style="width: 6rem; border-radius: 50%">
+                                            <div class="card-body text-center">                                       
+                                                <h5><%= s.getFname() + " " + s.getLname()%></h5>
+                                                <h6 style="color:#999"><%= s.getRollNo()%></h6>
+<!--                                                <a class="btn btn-primary" href="#">Profile</a>-->
+                                                <div class="icons">
+                                                   
+                                                    <a href="#"><i class="fa fa-phone"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <%
+                                        }
+                                    %>
+
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>

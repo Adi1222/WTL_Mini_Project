@@ -38,7 +38,7 @@
                         <h3 class="mt-2">Loading...</h3>
                     </div>
                     <div class="container-fluid mt-3" id="students-container">
-
+                        
                     </div>
                 </div>
             </div>

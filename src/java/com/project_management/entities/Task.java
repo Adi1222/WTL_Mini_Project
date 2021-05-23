@@ -122,8 +122,8 @@ public class Task {
         return timestamp;
     }
     
-    public Timestamp getDeadline() {
-        return deadline;
+    public String getDeadline() {
+        return deadline.toString();
     }
 
     public void setTimestamp(Timestamp timestamp) {
