@@ -47,6 +47,17 @@ public class Coordinator {
         this.profile = profile;
     }
 
+    public Coordinator(int id, String fname, String lname, String department, String subject, String profile) {
+        this.id = id;
+        this.fname = fname;
+        this.lname = lname;
+        this.department = department;
+        this.subject = subject;
+        this.profile = profile;
+    }
+    
+    
+
     public String getProfile() {
         return profile;
     }

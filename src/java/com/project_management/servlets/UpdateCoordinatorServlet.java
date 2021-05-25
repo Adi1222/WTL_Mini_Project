@@ -6,23 +6,25 @@
 package com.project_management.servlets;
 
 import com.project_management.database.DatabaseInterface;
-import com.project_management.entities.Task;
+import com.project_management.entities.Coordinator;
+import com.project_management.entities.Guideline;
 import com.project_management.helper.ConnectionProvider;
+import com.project_management.helper.Helper;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Timestamp;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author Admin
  */
-@MultipartConfig
-public class AddTaskServlet extends HttpServlet {
+public class UpdateCoordinatorServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,24 +43,47 @@ public class AddTaskServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddTaskServlet</title>");            
+            out.println("<title>Servlet UpdateCoordinatorServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AddTaskServlet at " + request.getContextPath() + "</h1>");
+
+            HttpSession session = request.getSession();
+            Coordinator c_old = (Coordinator) session.getAttribute("currentUser");
             
-            int teamId = Integer.parseInt(request.getParameter("team_id"));
-            String title = request.getParameter("title");
-            String description = request.getParameter("description");
-            String deadline = request.getParameter("deadline");
-            Timestamp deadlineTS = Timestamp.valueOf(deadline);
-            Task task = new Task(title, description, teamId, deadlineTS, "PENDING", "PENDING", "PENDING");
+            String fname = request.getParameter("first-name");
+            String lname = request.getParameter("last-name");
+            String dept = request.getParameter("dept");
+            String subject = request.getParameter("subject");
+            Part profile = request.getPart("profile");
+            String fileName; 
+            if(profile == null)
+            {
+                fileName = c_old.getProfile();
+            }
+            else
+            {
+                fileName = profile.getSubmittedFileName();
+            }
+            String path = request.getRealPath("/") + "guidelines" + File.separator + fileName;
+            if(profile != null) 
+            {
+                if (Helper.saveFile(profile.getInputStream(), path)) 
+                {
+                    System.out.println("image saved successfully");
+                }
+            }
+           
+            System.out.println("fname: " + fname);
+            System.out.println("lname: " + lname);
+            
+            Coordinator c = new Coordinator(c_old.getId(), fname, lname, dept, subject, fileName);
             
             DatabaseInterface db = new DatabaseInterface(ConnectionProvider.getConnection());
-            if(db.saveTask(task))
+            if(db.updateCoordinator(c_old.getId(), fname, lname, dept, subject, fileName))
             {
                 out.println("<h1>Success</h1>");
             }
-            
+
             out.println("</body>");
             out.println("</html>");
         }

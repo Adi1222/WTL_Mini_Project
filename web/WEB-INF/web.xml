@@ -48,6 +48,14 @@
         <servlet-name>AddTaskServlet</servlet-name>
         <servlet-class>com.project_management.servlets.AddTaskServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateCoordinatorServlet</servlet-name>
+        <servlet-class>com.project_management.servlets.UpdateCoordinatorServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateTaskServlet</servlet-name>
+        <servlet-class>com.project_management.servlets.UpdateTaskServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>project_overview_jsp</servlet-name>
         <url-pattern>/project-overview</url-pattern>
@@ -95,6 +103,14 @@
     <servlet-mapping>
         <servlet-name>AddTaskServlet</servlet-name>
         <url-pattern>/AddTaskServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateCoordinatorServlet</servlet-name>
+        <url-pattern>/UpdateCoordinatorServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateTaskServlet</servlet-name>
+        <url-pattern>/UpdateTaskServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -27,18 +27,74 @@
                 <div class="container-fluid">
                     <div class="row no-gutters">
                         <div class="col-md-3">
-                            <div class="d-flex justify-content-center">
+                            <div class="d-flex justify-content-start">
                                 <img src="resources/<%= user.getProfile()%>" alt="..." class="img-thumbnail rounded" style="width: 10rem"/>
                             </div>
-
                         </div>
-                        <div class="col-md-9">
-                            <h2 class="mt-1 ml-auto"><%= user.getFname() + " " + user.getLname()%></h2>
-                            <p class="ml-auto mb-0 text-dark"><%= user.getEmail()%></p>
-                            <p class="ml-auto mb-0 text-dark">Department: <%= user.getDepartment()%></p>
-                            <p class="ml-auto mb-0 text-dark">Subject: <%= user.getSubject()%></p>
+                        <div class="col-md-6 d-flex justify-content-start">
+                            <div>
+                                <h2 class="mt-1 ml-auto"><%= user.getFname() + " " + user.getLname()%></h2>
+                                <p class="ml-auto mb-0 text-dark"><%= user.getEmail() %></p>
+                                <p class="ml-auto mb-0 text-dark">Department: <%= user.getDepartment()%></p>
+                                <p class="ml-auto mb-0 text-dark">Subject: <%= user.getSubject()%></p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 d-flex justify-content-center align-items-center">
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#updateCoordinatorModal" >Edit Profile</button>
                         </div>
                     </div>
+                            
+                    <div class="modal fade" id="updateCoordinatorModal" tabindex="-1" role="dialog" aria-labelledby="updateCoordinatorLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="updateCoordinatorLabel">Edit profile</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form id="coordinator" action="UpdateCoordinatorServlet" method="post" enctype='multipart/form-data'>
+                                    <div class="modal-body">
+
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Profile:</label>
+                                            <input type="file" class="form-control" id="profile" name="profile">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">First name:</label>
+                                            <input type="text" class="form-control" id="first-name" name="first-name" ">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Last name:</label>
+                                            <input type="text" class="form-control" id="last-name" name="last-name" ">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Email:</label>
+                                            <label for="message-text" class="col-form-label"><%= user.getEmail() %></label>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Department:</label>
+                                            <input type="text" class="form-control" id="dept" name="dept" >
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Subject:</label>
+                                            <input type="text" class="form-control" id="subject" name="subject">
+                                        </div>                                      
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-outline-success mr-2" type="submit" name="btnAdd">Edit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                            
                     <h3 class="mb-3 mt-4">Approved Projects</h3>
 
 
@@ -78,6 +134,29 @@
             <%= cnt%>
                 );
             }
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                console.log('supboi');
+                $('#coordinator').on('submit', function (event) {
+                    event.preventDefault();
+                    let form = new FormData(this);
+                    $.ajax({
+                        url: "UpdateCoordinatorServlet",
+                        type: 'POST',
+                        data: form,
+                        success: function (data, textstatus, adfa) {
+                            console.log(data);
+                            $('#updateCoordinatorModal').modal("hide");
+                        },
+                        error: function (adfa, textstatus, errorThrown) {
+                            console.log(adfa);
+                        },
+                        processData: false,
+                        contentType: false
+                    });
+                });
+            });
         </script>
     </body>  
 </html>

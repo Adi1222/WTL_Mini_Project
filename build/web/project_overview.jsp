@@ -21,8 +21,7 @@
         <%@include file="navbar.jsp" %>
         <div class="wrapper">
             <%@include file="sidebar.jsp" %>
-            <%  
-                if (user == null) {
+            <%                if (user == null) {
                     response.sendRedirect("login_page.jsp");
                 }
                 int projectId = Integer.parseInt(request.getParameter("project_id"));
@@ -106,6 +105,11 @@
                                                 <textarea class="form-control" id="message-text" name="description"></textarea>
                                             </div>
 
+                                            <div class="form-group">
+                                                <label for="message-text" class="col-form-label">Deadline:</label>
+                                                <input type="text" class="form-control" id="deadline" name="deadline">
+                                            </div>
+
                                         </div>
                                         <div class="modal-footer">
                                             <button class="btn btn-outline-success mr-2" type="submit" name="btnAdd">Add</button>
@@ -151,7 +155,7 @@
                                     <div class="card-body text-center">                                       
                                         <h5><%= s.getFname() + " " + s.getLname()%></h5>
                                         <h6 style="color:#999"><%= s.getRollNo()%></h6>
-                                        <a class="btn btn-primary" href="#">Profile</a>
+                                        <a class="btn btn-primary" href="student_profile.jsp?id=<%= s.getId()%>">Profile</a>
                                     </div>
                                 </div>
                             </div>
@@ -202,29 +206,71 @@
                             <% } %>
                         </div>
                     </div>
-                    <% 
-                        if(tasks.size() != 0) {
-                            
+                    <%
+                        int selectedTaskId = -1;
+                        if (tasks.size() != 0) {
+
                     %>
                     <div class="my-3 p-3 bg-dark rounded box-shadow">
-                        <h3 class="text-light border-bottom border-gray">Tasks</h3>
+                        <div class="row border-bottom border-gray" style="margin: auto;"> 
+                            <h3 class="text-light  mr-auto">Tasks</h3>
+                            <form class="form-inline my-2 my-lg-0">
+                                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#updateTaskModal"><i class="fas fa-edit "></i></button>                           
+                            </form>                           
+                        </div>
+
                         <div class="col text-white mt-3">
-                            <% for(Task task: tasks) { %>
-                            <h5><%= task.getTitle() %></h5>
-                            <p class="small text-white border-bottom border-gray">                                
-                                <%= task.getDescription() %>
-                            </p>
+                            <% for (Task task : tasks) {%>    
+                            <div class="border-bottom border-gray mb-2">
+                                <div class="row mb-0"> 
+                                    <h5 class="mr-auto"> <%= task.getId()%>. <%= task.getTitle()%></h5>
+                                    <p class="small text-muted "> <%= task.getCoordinatorApproval()%> </p>
+                                </div>
+                                <p class=" small text-white mb-0">                                
+                                    <%= task.getDescription()%>
+                                </p>
+                            </div>
+
                             <% } %>
                         </div>
                     </div>
-                    
 
-                    <%  
+
+                    <%
+                            }
                         }
-                    }
 
                     %>
+                    <div class="modal fade" id="updateTaskModal" tabindex="-1" role="dialog" aria-labelledby="updateTaskModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="updateTaskModalLabel">New task</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form id="updateTask" action="UpdateTaskServlet?team_id=<%=t.getId()%>" method="post" >
+                                    <div class="modal-body">
 
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Task Id:</label>
+                                            <input type="text" class="form-control" id="tid" name="tid">
+                                        </div>     
+
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Grade:</label>
+                                            <input type="text" class="form-control" id="grade" name="grade">
+                                        </div>     
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-outline-success mr-2" type="submit" >Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div> 
                 </div>
             </div>
             <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
@@ -246,12 +292,12 @@
                 });
             </script>
             <script type="text/javascript">
-                $(document).ready(function () {
+                $(document).ready(function (e) {
                     $('#task').on('submit', function (event) {
                         event.preventDefault();
                         let form = new FormData(this);
                         $.ajax({
-                            url: "AddTaskServlet?team_id=<%= t.getId() %>",
+                            url: "AddTaskServlet?team_id=<%= t.getId()%>",
                             type: 'POST',
                             data: form,
                             success: function (data, textstatus, adfa) {
@@ -266,6 +312,6 @@
                         });
                     });
                 });
-            </script>
+            </script>  
     </body>
 </html>

@@ -21,29 +21,40 @@ public class Task {
     private String coordinatorApproval;
     private Timestamp timestamp;
     private String grade;
+    private Timestamp deadline;
 
     public Task() {
     }
 
-    public Task(String title, String description, int teamId, String status, String mentorApproval, String coordinatorApproval) {
+    public Task(String title, String description, int teamId, Timestamp deadline, String status, String mentorApproval, String coordinatorApproval) {
         this.title = title;
         this.description = description;
         this.teamId = teamId;
+        this.deadline = deadline;
         this.status = status;
         this.mentorApproval = mentorApproval;
         this.coordinatorApproval = coordinatorApproval;
     }
 
-    public Task(int id, String title, String description, int teamId, String status, String mentorApproval, String coordinatorApproval, Timestamp timestamp, String grade) {
+    public Task(int id, String title, String description, int teamId, Timestamp deadline, String status, String mentorApproval, String coordinatorApproval, Timestamp timestamp, String grade) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.teamId = teamId;
+        this.deadline = deadline;
         this.status = status;
         this.mentorApproval = mentorApproval;
         this.coordinatorApproval = coordinatorApproval;
         this.timestamp = timestamp;
         this.grade = grade;
+    }
+
+    public Timestamp getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(Timestamp deadline) {
+        this.deadline = deadline;
     }
 
     public int getId() {

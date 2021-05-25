@@ -6,13 +6,12 @@
 package com.project_management.servlets;
 
 import com.project_management.database.DatabaseInterface;
-import com.project_management.entities.Task;
+import com.project_management.entities.Team;
 import com.project_management.helper.ConnectionProvider;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Timestamp;
+import java.net.ConnectException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,8 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@MultipartConfig
-public class AddTaskServlet extends HttpServlet {
+public class UpdateTaskServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,23 +39,25 @@ public class AddTaskServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddTaskServlet</title>");            
+            out.println("<title>Servlet UpdateTaskServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AddTaskServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UpdateTaskServlet at " + request.getContextPath() + "</h1>");
             
-            int teamId = Integer.parseInt(request.getParameter("team_id"));
-            String title = request.getParameter("title");
-            String description = request.getParameter("description");
-            String deadline = request.getParameter("deadline");
-            Timestamp deadlineTS = Timestamp.valueOf(deadline);
-            Task task = new Task(title, description, teamId, deadlineTS, "PENDING", "PENDING", "PENDING");
+            int tid = Integer.parseInt(request.getParameter("tid"));
+            String grade = request.getParameter("grade");
+            int team_id = Integer.parseInt(request.getParameter("team_id"));
+            System.out.println("tid: " + tid);
+            
+            
             
             DatabaseInterface db = new DatabaseInterface(ConnectionProvider.getConnection());
-            if(db.saveTask(task))
+            if(db.markTaskAsComplete(tid, grade))
             {
-                out.println("<h1>Success</h1>");
+                Team t = db.getTeamById(team_id);
+                response.sendRedirect("project_overview.jsp?team_id=" + team_id + "&project_id=" + t.getProject_id());
             }
+            
             
             out.println("</body>");
             out.println("</html>");

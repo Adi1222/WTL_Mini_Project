@@ -26,7 +26,7 @@ public class DatabaseInterface
         boolean f = false;
         try
         {
-            String query = "insert into tasks(title, description, teamId, taskStatus, mentorApproval, coordinatorApproval) values(?,?,?,?,?,?)";
+            String query = "insert into tasks(title, description, teamId, taskStatus, mentorApproval, coordinatorApproval, deadline) values(?,?,?,?,?,?,?)";
             PreparedStatement pstmt = con.prepareStatement(query);
             pstmt.setString(1, task.getTitle());
             pstmt.setString(2, task.getDescription());
@@ -34,6 +34,7 @@ public class DatabaseInterface
             pstmt.setString(4, task.getStatus());
             pstmt.setString(5, task.getMentorApproval());
             pstmt.setString(6, task.getCoordinatorApproval());
+            pstmt.setTimestamp(7, task.getDeadline());
             pstmt.executeUpdate();
             f = true;
         }
@@ -63,8 +64,9 @@ public class DatabaseInterface
                 String mentorApproval = rs.getString("mentorApproval");
                 String coordinatorApproval = rs.getString("coordinatorApproval");
                 Timestamp timestamp = rs.getTimestamp("timestamp");
+                Timestamp deadline = rs.getTimestamp("deadline");
                 String grade = rs.getString("grade");
-                Task task = new Task(id, title, description, teamId, status, mentorApproval, coordinatorApproval, timestamp, grade);
+                Task task = new Task(id, title, description, teamId, deadline, status, mentorApproval, coordinatorApproval, timestamp, grade);
                 tasks.add(task);
             }
         }
@@ -73,6 +75,26 @@ public class DatabaseInterface
             e.printStackTrace();
         }
         return tasks;
+    }
+    
+    public boolean markTaskAsComplete(int task_id, String grade)
+    {
+        boolean f = false;
+        try
+        {
+            String query = "update tasks set coordinatorApproval=?, grade=? where id=?;";
+            PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setString(1, "COMPLETE");
+            pstmt.setString(2, grade);
+            pstmt.setInt(3, task_id);
+            pstmt.executeUpdate();
+            f = true;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return f;
     }
     
     public boolean saveProject(Project project)
@@ -314,6 +336,31 @@ public class DatabaseInterface
             pstmt.setString(7, coordinator.getProfile());
             pstmt.executeUpdate();
             dataInserted = true;
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        return dataInserted;
+    }
+    
+    public boolean updateCoordinator(int id, String fname, String lname, String dept, String subject, String profile)
+    {
+        System.out.println(fname);
+        boolean dataInserted = false;
+        try
+        {          
+            String query = "update coordinators set fname=?, lname=?, department=?, subject=?, profile=? where id=?;";
+            PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setString(1, fname);
+            pstmt.setString(2, lname);
+            pstmt.setString(3, dept);
+            pstmt.setString(4, subject);
+            pstmt.setString(5, profile);
+            pstmt.setInt(6, id);
+            pstmt.executeUpdate();
+            dataInserted = true;
+            System.out.println(pstmt);
         }
         catch(Exception e)
         {

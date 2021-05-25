@@ -15,9 +15,9 @@
     <body>        
         <nav id="sidebar">
             <ul class="lisst-unstyled components">
-                <li id="home" class="active">
+                <!--<li id="home" class="active">
                     <a href="home.jsp">Home</a>
-                </li>
+                </li>-->
                 <li id="teams">
                     <a href="teams.jsp">Teams</a>
                 </li>
@@ -27,16 +27,11 @@
                 <li id="students">
                     <a href="students.jsp">Students</a>
                 </li>
-                <li id="add">
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Add</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li id="team_approval">
-                            <a href="#">Task</a>
-                        </li>
-                        <li id="task_approval">
-                            <a href="guidelines.jsp">Guideline</a>
-                        </li>
-                    </ul>
+                <li id="guideline">
+                    <a href="guidelines.jsp">Guideline</a>
+                </li>
+                <li id="feedback">
+                    <a href="feedback.jsp">Feedback</a>
                 </li>
             </ul>
         </nav>

@@ -67,7 +67,7 @@
                         <i class="fas fa-sync fa-3x fa-spin"></i>
                         <h3 class="mt-2">Loading...</h3>
                     </div>
-                    <div class="container-fluid mt-3" id="mentors-container">
+                    <div class="container-fluid mt-3" id="guidelines-container">
 
                     </div>
                 </div>
@@ -80,19 +80,18 @@
         <script>
             $(document).ready(function (e) {
                 $('#home').removeClass('active');
-                $('#add').addClass('active');
+                $('#guideline').addClass('active');
                 $.ajax({
                     url: 'load_guidelines.jsp',
                     success: function (data, textStatus, jqXHR) {
                         $('#loader').hide();
-                        $('#mentors-container').html(data);
+                        $('#guidelines-container').html(data);
                     }
                 });
             });
         </script>
         <script type="text/javascript">
-            $(document).ready(function () {
-                console.log('supboi');
+            $(document).ready(function () {             
                 $('#guideline').on('submit', function (event) {
                     event.preventDefault();
                     let form = new FormData(this);
